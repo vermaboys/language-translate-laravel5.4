@@ -95,15 +95,20 @@ public function changeLang($locale=null)
 
 #A basic language selector example:
 
-#In config/app.php' Add language'=>array('en_US'=>'English','fr_FR'=>'French')
+#In config/app.php Add language'=>array('en_US'=>'English','fr_FR'=>'French')
 
-##
+#In resources\views\layouts\app.blade.php
 &lt;ul&gt;
+
 @foreach(Config::get('laravel-gettext.supported-locales') as $locale)
-    &lt;li&gt;
-    	&lt;a href="{{route('lang').'/'.$locale}}"&gt;
+
+&lt;li&gt;
+
+&lt;a href="{{route('lang').'/'.$locale}}"&gt;
     	{{config('app.language')[$locale]}}&lt;&#47;a&gt;
     &lt;&#47;li&gt;
+
 @endforeach 
+
 &lt;&#47;ul&gt;
 
