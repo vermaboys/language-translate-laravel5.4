@@ -98,6 +98,7 @@ public function changeLang($locale=null)
 #In config/app.php Add language'=>array('en_US'=>'English','fr_FR'=>'French')
 
 #In resources\views\layouts\app.blade.php
+
 &lt;ul&gt;
 
 @foreach(Config::get('laravel-gettext.supported-locales') as $locale)
