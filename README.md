@@ -1,5 +1,7 @@
 # language-translate-laravel5.4
 
+##You tube ==> https://youtu.be/9SjyczjL6Wo
+
 ##You can clone this project
 
 #run command git clone https://github.com/vermaboys/language-translate-laravel5.4.git
@@ -120,4 +122,8 @@ public function changeLang($locale=null)
 @endforeach 
 
 &lt;&#47;ul&gt;
+
+```
+You can translate keyword using _i For example {{ _i('Dashboard') }}
+``` 
 
