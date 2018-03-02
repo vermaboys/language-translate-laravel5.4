@@ -17,20 +17,29 @@
 #run composer update. Once it's installed, laravel will discover automatically the provider and load it.]
 
 #You also need to register the LaravelGettext middleware in the app/Http/Kernel.php file:
+
 	
-```protected $middlewareGroups = [
+protected $middlewareGroups = [
+
 	    'web' => [
+
 	      \Xinax\LaravelGettext\Middleware\GettextMiddleware::class,
-	   ],
-```]
-#Be sure to add the line after Illuminate\Session\Middleware\StartSession, otherwise the locale won't be saved into the session]
+
+]
+
+#Be sure to add the line after Illuminate\Session\Middleware\StartSession, otherwise the locale won't be saved into the session
 #you can register the service provider in config/app.php in the providers array:
 	
-```'providers' = [
-        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
-```]
+'providers' = [
 
-#Now you need to publish the configuration file in order to set your own application values: php artisan vendor:publish
+        Xinax\LaravelGettext\LaravelGettextServiceProvider::class,
+
+]
+
+
+#Now you need to publish the configuration file in order to set your own application values:
+
+#php artisan vendor:publish
 
 #This command creates the package configuration file in: config/laravel-gettext.php.
 
@@ -77,20 +86,24 @@ Route::get('/lang/{locale?}', ['as'=>'lang','uses'=>'HomeController@changeLang']
 * @return Redirect
 */
 
-```public function changeLang($locale=null)
+###
+public function changeLang($locale=null)
 {
     \LaravelGettext::setLocale($locale);
     return \Redirect::to(\URL::previous());
 }
-```
 
 #A basic language selector example:
 
 #In config/app.php' Add language'=>array('en_US'=>'English','fr_FR'=>'French')
 
-<!-- 
-<ul>
+##
+&lt;ul&gt;
 @foreach(Config::get('laravel-gettext.supported-locales') as $locale)
-    <li><a href="{{route('lang').'/'.$locale}}">{{config('app.language')[$locale]}}</a></li>
-    @endforeach 
-</ul>-->
+    &lt;li&gt;
+    	&lt;a href="{{route('lang').'/'.$locale}}"&gt;
+    	{{config('app.language')[$locale]}}&lt;&#47;a&gt;
+    &lt;&#47;li&gt;
+@endforeach 
+&lt;&#47;ul&gt;
+
