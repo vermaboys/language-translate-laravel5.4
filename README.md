@@ -4,7 +4,7 @@
 
 #run command git clone https://github.com/vermaboys/language-translate-laravel5.4.git
 
-#run command composer install
+run command composer install
 
 #Install Poedit - https://poedit.net/
 
@@ -12,9 +12,11 @@
 
 ##You can also implement language translate in your Laravel project
 
-#Add the composer repository to your composer.json file: "Belphemur/laravel-gettext": "6.x"]
+#Add the composer repository to your composer.json file: 
 
-#run composer update. Once it's installed, laravel will discover automatically the provider and load it.]
+"Belphemur/laravel-gettext": "6.x"
+
+#run composer update. Once it's installed, laravel will discover automatically the provider and load it.
 
 #You also need to register the LaravelGettext middleware in the app/Http/Kernel.php file:
 
@@ -24,6 +26,8 @@ protected $middlewareGroups = [
 	    'web' => [
 
 	      \Xinax\LaravelGettext\Middleware\GettextMiddleware::class,
+
+		]
 
 ]
 
@@ -39,7 +43,7 @@ protected $middlewareGroups = [
 
 #Now you need to publish the configuration file in order to set your own application values:
 
-#php artisan vendor:publish
+php artisan vendor:publish
 
 #This command creates the package configuration file in: config/laravel-gettext.php.
 
@@ -71,7 +75,7 @@ Ok, now it's configured. It's time to generate the directory structure and trans
 
 #run command php artisan gettext:create
 
-#With this command the needed directories and files are created on resources/lang/i18n ]
+#With this command the needed directories and files are created on resources/lang/i18n
 
 ##Route and controller implementation example:
 
@@ -88,14 +92,18 @@ Route::get('/lang/{locale?}', ['as'=>'lang','uses'=>'HomeController@changeLang']
 
 ###
 public function changeLang($locale=null)
+
 {
+
     \LaravelGettext::setLocale($locale);
+
     return \Redirect::to(\URL::previous());
+    
 }
 
 #A basic language selector example:
 
-#In config/app.php Add language'=>array('en_US'=>'English','fr_FR'=>'French')
+#In config/app.php Add 'language'=>array('en_US'=>'English','fr_FR'=>'French')
 
 #In resources\views\layouts\app.blade.php
 
